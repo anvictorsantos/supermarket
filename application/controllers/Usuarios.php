@@ -11,7 +11,6 @@ class Usuarios extends CI_Controller {
 
         $this->load->model("UsuariosModel");
         $this->UsuariosModel->salva($usuario);
-        $this->load->helper(array("form"));
         $this->load->view("usuarios/novo");
     }
 }

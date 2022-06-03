@@ -11,6 +11,13 @@
     <title>Hello, world!</title>
   </head>
   <body>
+      <?php if($this->session->flashdata("success")) : ?>
+      <p class="alert-success"><?= $this->session->flashdata("success") ?></p>
+      <?php endif ?>
+      <?php if($this->session->flashdata("danger")) : ?>
+        <p class="alert-danger"><?= $this->session->flashdata("danger") ?></p>
+      <?php endif ?>
+
     <h1>Produtos</h1>
     <table class="table">
         <thead>
@@ -30,6 +37,7 @@
     </table>
 
   <?php if ($this->session->userdata("usuario_logado")) : ?>
+    <?= anchor('produtos/formulario', 'Novo produto', array("class" => "btn btn-primary")) ?>
     <?= anchor('login/logout', 'Logout', array("class" => "btn btn-primary")) ?>
   <?php else : ?>
   <h1>Login</h1>
