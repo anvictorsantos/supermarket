@@ -8,7 +8,6 @@ class Login extends CI_Controller {
         $email = $this->input->post("email");
         $senha = md5($this->input->post("senha"));
         $usuario = $this->UsuariosModel->buscaPorEmailESenha($email, $senha);
-
         
         if($usuario) {
             $this->session->set_userdata("usuario_logado", $usuario);
@@ -17,8 +16,14 @@ class Login extends CI_Controller {
             $dados = array("mensagem" => "Usuário ou senha inválida.");
         }
         
+        redirect('/');
+    }
+
+    public function logout() 
+    {
+        $this->session->unset_userdata("usuario_logado");
         $this->load->helper(array("url", "form"));
-        $this->load->view("login/autenticar", $dados);
+        $this->load->view("login/logout");
     }
 
 }
