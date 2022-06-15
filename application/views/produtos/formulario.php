@@ -1,56 +1,67 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?= base_url("assets/css/bootstrap.min.css"); ?>">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-      <div class="container">
-        <?php
-        echo form_open("produtos/novo");
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="<?= base_url("assets/css/bootstrap.min.css"); ?>">
 
-        echo form_label("Nome", "nome");
-        echo form_input(array(
-        "name" => "nome",
-        "id" => "nome",
-        "class" => "form-control",
-        "maxlength" => "255"
-        ));
+  <title>Hello, world!</title>
+</head>
 
-        echo form_label("Preco", "preco");
-        echo form_input(array(
-        "name" => "preco",
-        "id" => "preco",
-        "class" => "form-control",
-        "maxlength" => "255",
-        "type" => "number"
-        ));
+<body>
+  <div class="container">
+    <h1>Cadastro de novo produto</h1>
 
-        echo form_textarea(array(
-        "name" => "descricao",
-        "class" => "form-control",
-        "id" => "descricao"
-        ));
+    <?php
+    echo form_open("produtos/novo");
 
-        echo form_button(array(
-        "class" => "btn btn-primary",
-        "content" => "Cadastrar",
-        "type" => "submit"
-        ));
+    echo form_label("Nome", "nome");
+    echo form_input(array(
+      "name" => "nome",
+      "id" => "nome",
+      "class" => "form-control",
+      "maxlength" => "255",
+      "value" => set_value("nome", "")
+    ));
+    echo form_error("nome");
 
-        echo form_close();
-        ?>
-      </div>
+    echo form_label("Preco", "preco");
+    echo form_input(array(
+      "name" => "preco",
+      "id" => "preco",
+      "class" => "form-control",
+      "maxlength" => "255",
+      "type" => "number",
+      "value" => set_value("preco", "")
+    ));
+    echo form_error("preco");
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    echo form_textarea(array(
+      "name" => "descricao",
+      "class" => "form-control",
+      "id" => "descricao",
+      "value" => set_value("descricao", "")
+    ));
+    echo form_error("descricao");
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script href="<?= base_url("assets/js/bootstrap.bundle.min.js"); ?>"></script>
-    </body>
+    echo form_button(array(
+      "class" => "btn btn-primary",
+      "content" => "Cadastrar",
+      "type" => "submit"
+    ));
+
+    echo form_close();
+    ?>
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script href="<?= base_url("assets/js/bootstrap.bundle.min.js"); ?>"></script>
+</body>
+
 </html>
