@@ -10,7 +10,7 @@ class Produtos extends CI_Controller
 
         $dados = array("produto" => $produto);
         $this->load->helper("typography");
-        $this->load->view("produtos/mostra", $dados);
+        $this->load->template("produtos/mostra", $dados);
     }
 
     public function index()
@@ -20,13 +20,13 @@ class Produtos extends CI_Controller
 
         $dados = array("produtos" => $produtos);
         $this->load->helper(array("currency"));
-        $this->load->view("produtos/index", $dados);
+        $this->load->template("produtos/index", $dados);
     }
 
     public function formulario()
     {
         autoriza();
-        $this->load->view("produtos/formulario");
+        $this->load->template("produtos/formulario");
     }
 
     public function novo()
@@ -52,7 +52,7 @@ class Produtos extends CI_Controller
             $this->session->set_flashdata("success", "Produto salvo com sucesso.");
             redirect("/");
         } else {
-            $this->load->view("produtos/formulario");
+            $this->load->template("produtos/formulario");
         }
     }
 
