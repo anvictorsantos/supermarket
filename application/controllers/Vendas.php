@@ -4,7 +4,7 @@ class Vendas extends CI_Controller
 {
     public function nova()
     {
-        $usuario = $this->session->userdata("usuario_logado");
+        $usuario = autoriza();
 
         $this->load->model("VendasModel");
         $venda = array(
@@ -19,7 +19,7 @@ class Vendas extends CI_Controller
 
     public function index()
     {
-        $usuario = $this->session->userdata("usuario_logado");
+        $usuario = autoriza();
         $this->load->model("ProdutosModel");
         $produtosVendidos = $this->ProdutosModel->buscaVendidos($usuario);
         $dados = array("produtosVendidos" => $produtosVendidos);
