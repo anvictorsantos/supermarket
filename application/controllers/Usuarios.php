@@ -1,6 +1,7 @@
-<?php if ( !defined('BASEPATH')) exit ('No direct script acess allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script acess allowed');
 
-class Usuarios extends CI_Controller {
+class Usuarios extends CI_Controller
+{
     public function novo()
     {
         $usuario = array(
