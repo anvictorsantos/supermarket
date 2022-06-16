@@ -57,7 +57,7 @@ class Produtos extends CI_Controller
     public function nao_tenha_a_palavra_melhor($nome)
     {
         $posicao = strpos($nome, "melhor");
-        if ($posicao != FALSE) {
+        if ($posicao === FALSE) {
             return TRUE;
         } else {
             $this->form_validation->set_message(

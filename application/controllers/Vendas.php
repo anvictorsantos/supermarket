@@ -6,7 +6,6 @@ class Vendas extends CI_Controller
     {
         $usuario = $this->session->userdata("usuario_logado");
 
-        $this->load->helper("date");
         $this->load->model("VendasModel");
         $venda = array(
             "produto_id" => $this->input->post("produto_id"),
@@ -16,5 +15,14 @@ class Vendas extends CI_Controller
         $this->VendasModel->salva($venda);
         $this->session->set_flashdata("success", "Pedido de compra efetuado com sucesso.");
         redirect("/");
+    }
+
+    public function index()
+    {
+        $usuario = $this->session->userdata("usuario_logado");
+        $this->load->model("ProdutosModel");
+        $produtosVendidos = $this->ProdutosModel->buscaVendidos($usuario);
+        $dados = array("produtosVendidos" => $produtosVendidos);
+        $this->load->view("vendas/index", $dados);
     }
 }
